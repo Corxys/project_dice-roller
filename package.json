@@ -1,0 +1,31 @@
+{
+  "name": "diceroll",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/www",
+    "dev": "nodemon bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.4.2",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Corxys/diceroll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Corxys/diceroll/issues"
+  },
+  "homepage": "https://github.com/Corxys/diceroll#readme",
+  "description": ""
+}

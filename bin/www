@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+ // le shebang, représenté par le préfixe #!, est l'en-tête d'un fichier texte qui indique au système d'exploitation de type Unix (sera ignoré sur les systèmes Windows) que ce fichier n'est pas un fichier binaire, mais un script. sur la même ligne, on précise l'interpréteur permettant d'exécuter ce script
+
+// récupération des modules
+const app = require("../index");
+const http = require("http");
+
+// récupération du port depuis l'environnement et stockage dans Express
+const port = normalizePort(process.env.PORT || 3000);
+app.set("port", port);
+
+// création du serveur HTTP
+const server = http.createServer(app);
+
+// écoute du serveur sur le port
+server.listen(port);
+// écoute des événements "error" et "listening" et envoi de callback le cas échéant
+server.on("error", onError);
+server.on("listening", onListening);
+
+// fonction "normalizePort"
+// introduite par "express-generator", cette fonction est un garde-corps de sécurité pour s'assurer que le port fourni est bien un number
+// pas vraiment utile si on renseigne déjà le port via une variable d'environnement
+function normalizePort(value) {
+  const port = parseInt(value, 10);
+
+  if (isNaN(port)) {
+    return value;
+  }
+
+  if (port >= 0) {
+    return port;
+  }
+
+  return false;
+};
+
+// fonction "onError"
+// écoute l'événement "error"
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  // opérateur conditionnel (qui est un opérateur ternaire)
+  // forme : condition ? value-if-true : value-if-false
+  const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // affichage de messages personnalisés en fonction des erreurs "EACCES" et "EADDRINUSE"
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges.");
+      process.exit(1);
+    case "EADDRINUSE":
+      console.error(bind + " is already in use.");
+      process.exit(1);
+    default:
+      throw error;
+  }
+};
+
+// fonction "onListening"
+// écoute l'événement "listening"
+function onListening() {
+  const address = server.address();
+  const bind = typeof address === "string" ? "pipe " + address : "port " + address.port;
+
+  // confirmation que le serveur écoute bien sur le port choisi avec un console.log
+  console.log(`Server listening on ${bind}.`);
+}

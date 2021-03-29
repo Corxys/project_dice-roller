@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/6bb82838-3bc9-403c-b0d3-7e488859016e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/diceroll-corxys",
+  "appService.deploySubpath": "."
+}
