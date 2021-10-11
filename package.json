@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/Corxys/diceroll/issues"
   },
-  "homepage": "https://github.com/Corxys/diceroll#readme"
+  "homepage": "https://github.com/Corxys/diceroll#readme",
+  "engines": {
+    "node": "14.x"
+  }
 }
